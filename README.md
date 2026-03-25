@@ -1,0 +1,3 @@
+The main page is in 1 Projects/Homepage
+
+This is just a working template, I plan to do a lot of polishing...
