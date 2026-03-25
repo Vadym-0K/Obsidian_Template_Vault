@@ -1,0 +1,63 @@
+{
+  "cascadeColors": true,
+  "colorBackground": true,
+  "palette": [
+    {
+      "id": "D8EBi710l41q8cfLBqnrK",
+      "name": "Orange",
+      "value": "#ed752f"
+    },
+    {
+      "id": "6S5HCN_u8vNAA4D7mZtxa",
+      "name": "Blue",
+      "value": "#2f98ed"
+    },
+    {
+      "id": "EzlG-0XksgecMVJLlVL9I",
+      "name": "Green",
+      "value": "#7aff70"
+    },
+    {
+      "id": "kdPetyFP6uNJOWUnVPxg-",
+      "name": "Yellow",
+      "value": "#edd42f"
+    },
+    {
+      "id": "xntlh67MJCwYEpFFkpgKP",
+      "name": "Red",
+      "value": "#ff6161"
+    },
+    {
+      "id": "8ReDwgDpP1gKrDgXFkHdk",
+      "name": "Pink",
+      "value": "#fc66ff"
+    },
+    {
+      "id": "M9GILINVkmZo_PC5oZn-5",
+      "name": "Purple",
+      "value": "#b72fed"
+    }
+  ],
+  "fileColors": [
+    {
+      "path": "1 Projects",
+      "color": "6S5HCN_u8vNAA4D7mZtxa"
+    },
+    {
+      "path": "2 Areas",
+      "color": "D8EBi710l41q8cfLBqnrK"
+    },
+    {
+      "path": "3 Resources",
+      "color": "kdPetyFP6uNJOWUnVPxg-"
+    },
+    {
+      "path": "4 Archives",
+      "color": "M9GILINVkmZo_PC5oZn-5"
+    },
+    {
+      "path": "1 Projects/Shopping List.md",
+      "color": "6S5HCN_u8vNAA4D7mZtxa"
+    }
+  ]
+}

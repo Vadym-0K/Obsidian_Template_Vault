@@ -1,0 +1,240 @@
+{
+  "main": {
+    "id": "d64ef66725371dc5",
+    "type": "split",
+    "children": [
+      {
+        "id": "23703aa20bf90e8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b9ab4fb923bbb35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 Projects/Homepage.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Homepage"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "98c399ec5862d1f6",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "c1d9a36e34efa173",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "f3553b48ecdfc17e",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "80b0dbe3ad62e0c1",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "bcc4dbb1f11114ca",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "99a86faafa6bfa87",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "c5dbe51f86bd6e66",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "e25283d0e5b6661f",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "ae2ba35ae2952f47",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "6672eacd9b3d04de",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      },
+      {
+        "id": "12f80c8fdf8d605e",
+        "type": "leaf",
+        "state": {
+          "type": "git-view",
+          "state": {},
+          "icon": "git-pull-request",
+          "title": "Source Control"
+        }
+      },
+      {
+        "id": "b9380784899eaa4d",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "calendar"
+        }
+      }
+    ],
+    "currentTab": 3
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "4b9ab4fb923bbb35",
+  "lastOpenFiles": [
+    "1 Projects/Goals.md",
+    "1 Projects/Homepage.md",
+    "1 Projects/TODO.md",
+    "3 Resources/Homepage/Add Points.md",
+    "/3 Resources/Homepage/Add Points.md",
+    "3 Resources/Homepage/Profile Badges.md",
+    "3 Resources/Homepage/Badge Showcase.md",
+    "/4 Archives/Templates/Daily Journal Template.md",
+    "/4 Archives/Templates",
+    "/4 Archives/Journal/Daily Notes/2026-03-25.md",
+    "/4 Archives/Journal/Daily Notes/2026-03-24.md",
+    "/4 Archives/Journal/Daily Notes",
+    "/4 Archives/Journal",
+    "/4 Archives",
+    "/3 Resources/Homepage/Profile Badges.md",
+    "/3 Resources/Homepage/Badge Showcase.md",
+    "/1 Projects/Shopping List.md",
+    "/1 Projects/Homepage.md",
+    "/1 Projects",
+    "/3 Resources/Homepage",
+    "/3 Resources",
+    "3 Resources/Git.md",
+    "3 Resources/Github.md",
+    "4 Archives/Journal/Daily Notes/2026-03-26.md",
+    "4 Archives/Journal/Daily Notes/2026-03-25.md",
+    "3 Resources/Profile State.md",
+    "3 Resources/Homepage/Gamified Profile.md",
+    "3 Resources/Homepage",
+    "Hydration.md",
+    "1 Projects/Army.md",
+    "1 Projects/Quick Notes.md",
+    "4 Archives/Journal/Daily Notes/2026-03-24.md",
+    "3 Resources/Finances/Financial Dashboard.md",
+    "3 Resources/Finances/Transaction.md",
+    "/3 Resources/Finances",
+    "3 Resources/Finances",
+    "1 Projects/Homepage Canvas.canvas",
+    "/4 Archives/Attachments/Pasted image 20260321014325.png",
+    "4 Archives/Attachments/Pasted image 20260321014325.png",
+    "/1 Projects/Homepage Canvas.canvas",
+    "4 Archives/Attachments/wallpaper_tank.jpg",
+    "4 Archives/Attachments/wallpaper_princeofpersia.jpg",
+    "4 Archives/Attachments/wallpaper_gastation.jpg",
+    "4 Archives/Attachments/wallpaper_gasstation.jpg",
+    "4 Archives/Attachments/wallpaper_fireworks.jpg",
+    "4 Archives/Attachments/wallpaper_city_green.jpg",
+    "4 Archives/Attachments/wallpaper_city_dark.jpg",
+    "4 Archives/Attachments/wallpaper_berserk.jpg"
+  ]
+}

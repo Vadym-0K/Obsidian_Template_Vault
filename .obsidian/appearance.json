@@ -1,0 +1,15 @@
+{
+  "accentColor": "",
+  "cssTheme": "Minimal",
+  "baseFontSize": 16,
+  "enabledCssSnippets": [
+    "fonts",
+    "Iterative Rainbow Folder Backgrounds",
+    "Sidebar Colors"
+  ],
+  "textFontFamily": "JetBrainsMono",
+  "interfaceFontFamily": "JetBrainsMono",
+  "theme": "system",
+  "showViewHeader": true,
+  "showRibbon": true
+}
