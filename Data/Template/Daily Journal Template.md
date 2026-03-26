@@ -1,6 +1,8 @@
+mood:: 5
+sleep:: 3
 
 ```dataviewjs
-const DAILY_FOLDER = "4 Archives/Journal/Daily Notes";
+const DAILY_FOLDER = "Data/Journal";
 const DAILY_FORMAT = "YYYY-MM-DD";
 
 function styleBar(el) {

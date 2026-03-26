@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "2a116542c01812fe",
+        "id": "d6e6f3f120b4d505",
         "type": "tabs",
         "children": [
           {
-            "id": "7c173c5851b4615d",
+            "id": "bdd3dc8bedd82bdc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3 Resources/Finances/Financial Dashboard.md",
+                "file": "Vault Changelog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Financial Dashboard"
-            }
-          },
-          {
-            "id": "388d939972c01c47",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "4 Archives/Templates/Example Template.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Example Template"
+              "title": "Vault Changelog"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -171,21 +156,32 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "4 Archives/Templates/Example Template.md",
+                "file": "1 Projects/Army.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Example Template"
+              "title": "Outline of Army"
+            }
+          },
+          {
+            "id": "cd5738f89f741f9a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 270.5
+    "width": 270.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,54 +196,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "388d939972c01c47",
+  "active": "bdd3dc8bedd82bdc",
   "lastOpenFiles": [
-    "4 Archives/Templates/Daily Journal Template.md",
-    "4 Archives/Journal/Daily Notes/2026-03-26.md",
-    "4 Archives/Journal/Daily Notes/2026-03-25.md",
-    "4 Archives/Journal/Daily Notes/2026-03-24.md",
-    "4 Archives/Journal/Daily Notes/2026-03-23.md",
-    "4 Archives/Journal/Daily Notes/2026-03-22.md",
-    "4 Archives/Journal/Daily Notes/2026-03-21.md",
-    "4 Archives/Journal/Daily Notes/2026-03-20.md",
-    "4 Archives/Journal/Daily Notes/2026-03-19.md",
-    "4 Archives/Journal/Daily Notes/2026-03-16.md",
-    "4 Archives/Journal/Daily Notes/2026-03-12.md",
-    "4 Archives/Journal/Daily Notes/2026-03-11.md",
-    "4 Archives/Journal/Daily Notes/2026-03-09.md",
-    "4 Archives/Journal/Daily Notes/2026-03-08.md",
-    "3 Resources/Profile State.md",
-    "3 Resources/Homepage/Profile Badges.md",
-    "3 Resources/Homepage/Badge Showcase.md",
-    "3 Resources/Homepage/Add Points.md",
-    "3 Resources/Finances/Transaction.md",
-    "3 Resources/Finances/Financial Dashboard.md",
-    "3 Resources/Finances/Bank Import.md",
-    "1 Projects/TODO.md",
-    "1 Projects/Homepage.md",
-    "4 Archives/Attachments/wallpaper_berserk.jpg",
-    "4 Archives/Templates/Example Template.md",
-    "4 Archives/Journal/Daily Notes/2026-03-07.md",
-    "4 Archives/Journal/Daily Notes/2026-03-03.md",
-    "3 Resources/Attachments/wallpaper_tank.jpg",
-    "3 Resources/Attachments/wallpaper_princeofpersia.jpg",
-    "3 Resources/Attachments/wallpaper_gastation.jpg",
-    "3 Resources/Attachments/wallpaper_gasstation.jpg",
-    "3 Resources/Attachments/wallpaper_fireworks.jpg",
-    "3 Resources/Attachments/wallpaper_city_green.jpg",
-    "3 Resources/Attachments/wallpaper_city_dark.jpg",
-    "3 Resources/Attachments/Port_Toys.webm",
-    "3 Resources/Attachments/Pasted image 20260321014325.png",
-    "3 Resources/Attachments/porn_sucking.webm",
-    "3 Resources/Attachments/Pasted image 20260216124250.png",
-    "3 Resources/Attachments/86c1ca21274642fb15c1b9a95af1720e_MD5.pdf",
+    "README.md",
+    "TODO.md",
+    "Vault Changelog.md",
+    "Data/Resources/Images/water intake.png",
+    "Data/Resources/Images/plugin setup.png",
+    "Data/Resources/Images/Personal Stats.png",
+    "Data/Resources/Images/Homepage.png",
+    "Data/Resources/Images/Fuel.png",
+    "Data/Resources/Images/Financial Dashboard.png",
+    "Data/Resources/Images/Achievements.png",
+    "Fuel/Fuel.md",
+    "Fuel/Fuel Data.md",
+    "Homepage.md",
+    "Data/Template/Daily Journal Template.md",
+    "Data/Journal/2026-03-26.md",
+    "Data/Journal/2026-03-25.md",
+    "Data/Journal/2026-03-24.md",
+    "Data/Resources/Images",
+    "Fuel/Vehicles.md",
+    "Fianances/Transaction.md",
+    "Fianances/Financial Dashboard.md",
+    "Fianances/Bank Import.md",
+    "Life Game Profile/Work Stats.md",
+    "Life Game Profile/Profile State.md",
+    "Life Game Profile/Badge Showcase.md",
+    "Life Game Profile/Game Log.md",
+    "Life Game Profile/Achievements.md",
+    "Life Game Profile/Personal Stats.md",
+    "Add Points.md",
     "4 Archives/Attachments",
-    "3 Resources/Homepage",
-    "4 Archives/Attachments/86c1ca21274642fb15c1b9a95af1720e_MD5.pdf",
-    "3 Resources/Finances",
-    "4 Archives/Devices",
-    "Untitled.base",
-    "4 Archives/Attachments/porn_sucking.webm",
+    "4 Archives",
+    "Life Game Profile/Game Log",
+    "3 Resources/Schedule.md",
+    "3 Resources/Profile State.md",
+    "3 Resources/Music.md",
+    "3 Resources/Movies.md",
+    "4 Archives/Journal/Weekly Notes",
+    "4 Archives/Journal/Yearly Notes",
+    "4 Archives/Journal/Quarterly Notes",
+    "4 Archives/Journal/Monthly Notes",
+    "4 Archives/Journal/Daily Notes",
+    "4 Archives/copilot/copilot-custom-prompts",
+    "4 Archives/Attachments/wallpaper_tank.jpg",
+    "4 Archives/Attachments/wallpaper_princeofpersia.jpg",
+    "4 Archives/Attachments/wallpaper_fireworks.jpg",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Canvas.canvas",

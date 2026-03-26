@@ -2,8 +2,8 @@
   "showLineNumber": false,
   "alwaysUpdateLinks": true,
   "newFileLocation": "root",
-  "attachmentFolderPath": "4 Archives/Attachments",
-  "openBehavior": "file:/1 Projects/Homepage",
+  "attachmentFolderPath": "Data/Resources",
+  "openBehavior": "file:Homepage",
   "promptDelete": false,
   "uriCallbacks": true,
   "showInlineTitle": true

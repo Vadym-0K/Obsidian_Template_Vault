@@ -1,0 +1,33 @@
+{
+  "debounceTimeout": 300,
+  "ignoreOpenFiles": false,
+  "ignoreForceViewAll": false,
+  "folders": [
+    {
+      "folder": "",
+      "viewMode": ""
+    }
+  ],
+  "files": [
+    {
+      "filePattern": "Homepage",
+      "viewMode": "obsidianUIMode: preview"
+    },
+    {
+      "filePattern": "Financial Dashboard",
+      "viewMode": "obsidianUIMode: preview"
+    },
+    {
+      "filePattern": "Achievements",
+      "viewMode": "obsidianUIMode: preview"
+    },
+    {
+      "filePattern": "Personal Stats",
+      "viewMode": "obsidianUIMode: preview"
+    },
+    {
+      "filePattern": "Fuel",
+      "viewMode": "obsidianUIMode: preview"
+    }
+  ]
+}

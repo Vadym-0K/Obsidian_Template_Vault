@@ -169,43 +169,103 @@ btn.onclick = async () => {
 ## Summary
 
 ```dataviewjs
-const filePath = "3 Resources/Finances/Transaction.md";
+await (async () => {
+  const filePath = "Fianances/Transaction.md";
 
-function money(n) {
-  const v = Number(n) || 0;
-  return v.toLocaleString(undefined, { style: "currency", currency: "USD" });
-}
-
-function parseJsonLineTransactions(raw) {
-  const txs = [];
-  for (const line of raw.split("\n")) {
-    const t = line.trim();
-    if (!t) continue;
-    const json = t.startsWith("- ") ? t.slice(2).trim() : t.trim();
-    if (!json.startsWith("{")) continue;
-    try {
-      const o = JSON.parse(json);
-      if (!o?.date || !o?.type) continue;
-      txs.push({
-        date: String(o.date),
-        ts: o.ts ? String(o.ts) : "",
-        type: String(o.type),
-        amount: Number(o.amount) || 0,
-        category: String(o.category ?? "Other"),
-        note: String(o.note ?? ""),
-      });
-    } catch {}
+  function money(n) {
+    const v = Number(n) || 0;
+    return v.toLocaleString(undefined, { style: "currency", currency: "USD" });
   }
-  return txs;
-}
 
-function sum(arr) { return arr.reduce((s, x) => s + x, 0); }
-function yyyymm(d) { return String(d).slice(0, 7); }
+  function parseJsonLineTransactions(raw) {
+    const txs = [];
+    for (const line of raw.split("\n")) {
+      const t = line.trim();
+      if (!t) continue;
+      const json = t.startsWith("- ") ? t.slice(2).trim() : t.trim();
+      if (!json.startsWith("{")) continue;
+      try {
+        const o = JSON.parse(json);
+        if (!o?.date || !o?.type) continue;
+        txs.push({
+          date: String(o.date),
+          ts: o.ts ? String(o.ts) : "",
+          type: String(o.type),
+          amount: Number(o.amount) || 0,
+          category: String(o.category ?? "Other"),
+          note: String(o.note ?? ""),
+        });
+      } catch {}
+    }
+    return txs;
+  }
 
-const file = app.vault.getAbstractFileByPath(filePath);
-if (!file) {
-  dv.paragraph("Transactions file missing: " + filePath);
-} else {
+  const sum = (arr) => arr.reduce((s, x) => s + x, 0);
+  const yyyymm = (d) => String(d).slice(0, 7);
+
+  // ---- minimal variable export (NO file writes = no lag) ----
+  // Accessible from other files via: window.__FIN = window.__FIN || {}; window.__FIN.Balance, etc.
+  function exportFinanceVars(vars) {
+    window.__FIN = Object.assign(window.__FIN || {}, vars);
+  }
+
+  // ---- minimal UI color helpers ----
+  const POS = "#2dff9a";
+  const NEG = "#ff6b6b";
+  const NEU = "rgba(255,255,255,0.92)";
+
+  const fmtSignedMoney = (n) => {
+    const v = Number(n) || 0;
+    if (v === 0) return money(0);
+    return (v > 0 ? "+" : "-") + money(Math.abs(v));
+  };
+
+  const toneColor = (n) => {
+    const v = Number(n) || 0;
+    if (v > 0) return POS;
+    if (v < 0) return NEG;
+    return NEU;
+  };
+
+  function kpi(kpiWrap, title, valueText, numericForTone=null, sub = "") {
+    const col = (numericForTone === null || numericForTone === undefined) ? NEU : toneColor(numericForTone);
+
+    const card = document.createElement("div");
+    card.style.padding = "12px";
+    card.style.border = "1px solid rgba(255,255,255,0.12)";
+    card.style.borderRadius = "14px";
+    card.style.background = "rgba(30,30,30,0.65)";
+    
+    
+
+    const tt = document.createElement("div");
+    tt.style.opacity = "0.85";
+    tt.style.fontSize = "12px";
+    tt.textContent = title;
+
+    const v = document.createElement("div");
+    v.style.fontSize = "22px";
+    v.style.fontWeight = "900";
+    v.style.marginTop = "6px";
+    v.style.color = col;
+    v.textContent = valueText;
+
+    const s = document.createElement("div");
+    s.style.opacity = "0.75";
+    s.style.fontSize = "12px";
+    s.style.marginTop = "6px";
+    s.textContent = sub;
+
+    card.appendChild(tt);
+    card.appendChild(v);
+    if (sub) card.appendChild(s);
+    kpiWrap.appendChild(card);
+  }
+
+  // ---- main ----
+  const file = app.vault.getAbstractFileByPath(filePath);
+  if (!file) { dv.paragraph("Transactions file missing: " + filePath); return; }
+
   const raw = await app.vault.read(file);
   const txs = parseJsonLineTransactions(raw).slice().sort((a, b) => {
     const ad = a.ts?.trim() ? a.ts : a.date;
@@ -213,64 +273,52 @@ if (!file) {
     return ad < bd ? -1 : ad > bd ? 1 : 0;
   });
 
-  if (!txs.length) {
-    dv.paragraph("No transactions found.");
-  } else {
-    const startingBalance = Number(dv.current().startingBalance ?? 0) || 0;
+  if (!txs.length) { dv.paragraph("No transactions found."); return; }
 
-    const incomeTotal = sum(txs.filter(t => t.type === "income").map(t => t.amount));
-    const expenseTotal = sum(txs.filter(t => t.type === "expense").map(t => t.amount));
-    const balance = startingBalance + (incomeTotal - expenseTotal);
+  const startingBalance = Number(dv.current().startingBalance ?? 0) || 0;
 
-    const currentMonth = moment().format("YYYY-MM");
-    const txMonth = txs.filter(t => yyyymm(t.date) === currentMonth);
-    const incomeMonth = sum(txMonth.filter(t => t.type === "income").map(t => t.amount));
-    const expenseMonth = sum(txMonth.filter(t => t.type === "expense").map(t => t.amount));
-    const netMonth = incomeMonth - expenseMonth;
+  const incomeTotal = sum(txs.filter(t => t.type === "income").map(t => t.amount));
+  const expenseTotal = sum(txs.filter(t => t.type === "expense").map(t => t.amount));
+  const balance = startingBalance + (incomeTotal - expenseTotal);
 
-    const kpiWrap = dv.el("div", "");
-    kpiWrap.style.display = "grid";
-    kpiWrap.style.gridTemplateColumns = "repeat(auto-fit, minmax(190px, 1fr))";
-    kpiWrap.style.gap = "10px";
-    kpiWrap.style.margin = "10px 0 16px 0";
+  const currentMonth = moment().format("YYYY-MM");
+  const txMonth = txs.filter(t => yyyymm(t.date) === currentMonth);
+  const incomeMonth = sum(txMonth.filter(t => t.type === "income").map(t => t.amount));
+  const expenseMonth = sum(txMonth.filter(t => t.type === "expense").map(t => t.amount));
+  const netMonth = incomeMonth - expenseMonth;
 
-    function kpi(title, value, sub = "") {
-      const card = document.createElement("div");
-      card.style.padding = "12px";
-      card.style.border = "1px solid rgba(255,255,255,0.12)";
-      card.style.borderRadius = "14px";
-      card.style.background = "rgba(30,30,30,0.65)";
+  // Export variables (fast, no vault writes)
+  exportFinanceVars({
+    Balance: balance,
+    IncomeMonth: incomeMonth,
+    ExpenseMonth: expenseMonth,
+    NetMonth: netMonth,
+    CurrentMonth: currentMonth,
+    UpdatedAt: moment().format("YYYY-MM-DD HH:mm")
+  });
 
-      const t = document.createElement("div");
-      t.style.opacity = "0.85";
-      t.style.fontSize = "12px";
-      t.textContent = title;
+  // Render KPIs (same layout; minimal color changes)
+  const kpiWrap = dv.el("div", "");
+  kpiWrap.style.display = "flex";
+  kpiWrap.style.flexWrap = "wrap";
+  kpiWrap.style.justifyContent = "flex-start";  // pack from left
+  kpiWrap.style.alignItems = "stretch";
+  kpiWrap.style.gap = "10px";
+  kpiWrap.style.margin = "10px 0 16px 0";
+  kpiWrap.style.width = "100%";
+  kpiWrap.style.maxWidth = "100%";
 
-      const v = document.createElement("div");
-      v.style.fontSize = "22px";
-      v.style.fontWeight = "800";
-      v.style.marginTop = "6px";
-      v.textContent = value;
+  kpi(kpiWrap, "Current balance", money(balance), balance, `Starting: ${money(startingBalance)}`);
+  kpi(kpiWrap, "Income (all time)", money(incomeTotal), incomeTotal);
+  kpi(kpiWrap, "Expenses (all time)", money(expenseTotal), -expenseTotal);
+  kpi(kpiWrap, "Net (this month)", fmtSignedMoney(netMonth), netMonth, currentMonth);
+  kpi(kpiWrap, "Income (this month)", money(incomeMonth), incomeMonth, currentMonth);
+  kpi(kpiWrap, "Expenses (this month)", money(expenseMonth), -expenseMonth, currentMonth);
 
-      const s = document.createElement("div");
-      s.style.opacity = "0.75";
-      s.style.fontSize = "12px";
-      s.style.marginTop = "6px";
-      s.textContent = sub;
+  // Optional: tiny note showing exports (comment out if you don’t want it)
+  // dv.paragraph(`Exported: window.__FIN = ${JSON.stringify(window.__FIN)}`);
 
-      card.appendChild(t);
-      card.appendChild(v);
-      if (sub) card.appendChild(s);
-      kpiWrap.appendChild(card);
-    }
-
-    kpi("Current balance", money(balance), `Starting: ${money(startingBalance)}`);
-    kpi("Income (all time)", money(incomeTotal));
-    kpi("Expenses (all time)", money(expenseTotal));
-    kpi("Net (this month)", money(netMonth), currentMonth);
-    kpi("Expenses (this month)", money(expenseMonth), currentMonth);
-  }
-}
+})();
 ```
 
 ---
@@ -278,7 +326,7 @@ if (!file) {
 ## Custom date range stats
 
 ```dataviewjs
-const filePath = "3 Resources/Finances/Transaction.md";
+const filePath = "Fianances/Transaction.md";
 
 // ---------- helpers ----------
 function money(n) {
@@ -495,7 +543,7 @@ ___
 ### Ending balance by month (line)
 
 ```dataviewjs
-const filePath = "3 Resources/Finances/Transaction.md";
+const filePath = "Fianances/Transaction.md";
 
 function quickChartUrl(config, w = 900, h = 320, bg = "transparent") {
   const base = "https://quickchart.io/chart";
@@ -597,7 +645,7 @@ if (!file) {
 ### Income vs expenses by month (bar)
 
 ```dataviewjs
-const filePath = "3 Resources/Finances/Transaction.md";
+const filePath = "Fianances/Transaction.md";
 
 function quickChartUrl(config, w = 900, h = 320, bg = "transparent") {
   const base = "https://quickchart.io/chart";
@@ -683,7 +731,7 @@ if (!file) {
 ## Latest transactions
 
 ```dataviewjs
-const filePath = "3 Resources/Finances/Transaction.md";
+const filePath = "Fianances/Transaction.md";
 
 function money(n) {
   const v = Number(n) || 0;

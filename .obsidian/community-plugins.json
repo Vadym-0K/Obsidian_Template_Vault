@@ -1,5 +1,9 @@
 [
+  "obsidian-local-images-plus",
+  "oz-image-plugin",
+  "obsidian-git",
   "obsidian-minimal-settings",
   "obsidian-style-settings",
-  "dataview"
+  "dataview",
+  "obsidian-view-mode-by-frontmatter"
 ]

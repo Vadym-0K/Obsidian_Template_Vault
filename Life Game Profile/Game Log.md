@@ -1,0 +1,15 @@
+- {"date":"2026-03-25","ts":"2026-03-25 16:41","delta":3,"kind":"task","note":"Normal"}
+- {"date":"2026-03-25","ts":"2026-03-25 16:57","delta":0,"kind":"activity","note":"Gym / Lifting","stats":{"Strength":1}}
+- {"date":"2026-03-25","ts":"2026-03-25 16:57","delta":1,"kind":"stat","note":"Strength","stat":"Strength"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":3,"kind":"task","note":"Normal"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":0,"kind":"activity","note":"deep (Normal x1.5)","activity":"deep","mult":1.5,"difficulty":"Normal","stats":{"Focus":1.5}}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1.5,"kind":"stat","note":"STAT:Focus","stat":"Focus","activity":"deep","mult":1.5,"difficulty":"Normal"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"task","note":"Easy"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":0,"kind":"activity","note":"social (Easy x1)","activity":"social","mult":1,"difficulty":"Easy","stats":{"Social":1}}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"stat","note":"STAT:Social","stat":"Social","activity":"social","mult":1,"difficulty":"Easy"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"task","note":"Easy"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":0,"kind":"activity","note":"run (Easy x1)","activity":"run","mult":1,"difficulty":"Easy","stats":{"Cardio":1}}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"stat","note":"STAT:Cardio","stat":"Cardio","activity":"run","mult":1,"difficulty":"Easy"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"task","note":"Easy"}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":0,"kind":"activity","note":"journal (Easy x1)","activity":"journal","mult":1,"difficulty":"Easy","stats":{"Discipline":1}}
+- {"date":"2026-03-25","ts":"2026-03-25 17:53","delta":1,"kind":"stat","note":"STAT:Discipline","stat":"Discipline","activity":"journal","mult":1,"difficulty":"Easy"}
