@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vault Changelog.md",
+                "file": "Data/Template/Daily Journal Template.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vault Changelog"
+              "title": "Daily Journal Template"
             }
           }
         ]
@@ -171,8 +171,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -180,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 270.5,
-    "collapsed": true
+    "width": 270.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,11 +195,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "bdd3dc8bedd82bdc",
+  "active": "cd5738f89f741f9a",
   "lastOpenFiles": [
+    "Homepage.md",
+    "Vault Changelog.md",
     "README.md",
     "TODO.md",
-    "Vault Changelog.md",
     "Data/Resources/Images/water intake.png",
     "Data/Resources/Images/plugin setup.png",
     "Data/Resources/Images/Personal Stats.png",
@@ -210,7 +210,6 @@
     "Data/Resources/Images/Achievements.png",
     "Fuel/Fuel.md",
     "Fuel/Fuel Data.md",
-    "Homepage.md",
     "Data/Template/Daily Journal Template.md",
     "Data/Journal/2026-03-26.md",
     "Data/Journal/2026-03-25.md",

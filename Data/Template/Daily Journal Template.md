@@ -1,8 +1,12 @@
-mood:: 5
-sleep:: 3
-
+#### properties
+other_liquid:: 0
+hydration:: 0
+water:: 0
+mood:: 0
+sleep:: 8
+####
 ```dataviewjs
-const DAILY_FOLDER = "Data/Journal";
+const DAILY_FOLDER = "4 Archives/Journal/Daily Notes";
 const DAILY_FORMAT = "YYYY-MM-DD";
 
 function styleBar(el) {
@@ -150,120 +154,26 @@ moods.forEach(m => {
     container.appendChild(btn);
 });
 ```
-
 ```dataviewjs
-// Sleep slider (original look) -> writes INLINE FIELD: sleep:: <hours> (0..15)
-// UI updates while dragging; saves only on release (change)
+// Sleep (minimal) — quick buttons + custom input (press Enter), writes inline `sleep::` to CURRENT note
+const f=app.workspace.getActiveFile(); if(!f) return;
+const K="sleep", MIN=0, MAX=15, PRE=[4,5,6,7,7.5,8,9,10];
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"), clamp=x=>Math.max(MIN,Math.min(MAX,Number(x)||0));
+const up=(t,v)=>{const r=new RegExp(`^\\s*${esc(K)}::\\s*.*$`,"m"), l=`${K}:: ${v}`; return r.test(t)?t.replace(r,l):`${l}\n${t}`;};
+const save=v=>(async()=>{v=clamp(v); const t=await app.vault.read(f); const nt=up(t,v); if(nt!==t) await app.vault.modify(f,nt); new Notice(`Sleep ${v}h`);})();
 
-const FIELD = "sleep";        // inline field key: sleep::
-const GOAL_FIELD = "sleep_goal"; // optional (inline OR frontmatter), shown as x/x
-const min = 0, max = 15, step = 0.5;
+const c=this.container; c.innerHTML=""; c.style.marginBottom="12px";
+const row=document.createElement("div"); row.style.cssText="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"; c.appendChild(row);
 
-function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); }
-function clamp(v){
-  const n = Number(v);
-  if (!Number.isFinite(n)) return min;
-  return Math.max(min, Math.min(max, n));
-}
-function readInline(text, key){
-  const r = new RegExp(`^\\s*${escRe(key)}::\\s*(.*?)\\s*$`, "m");
-  const m = text.match(r);
-  if (!m) return null;
-  const v = Number(String(m[1] ?? "").trim().replace(/^"(.*)"$/,"$1").replace(/^'(.*)'$/,"$1"));
-  return Number.isFinite(v) ? v : null;
-}
-function upsertInline(text, key, value){
-  const r = new RegExp(`^\\s*${escRe(key)}::\\s*.*$`, "m");
-  const line = `${key}:: ${value}`;
-  return r.test(text) ? text.replace(r, line) : `${line}\n${text}`;
-}
+const mk=v=>{const b=document.createElement("button"); b.textContent=v+"h";
+b.style.cssText="padding:6px 10px;border-radius:10px;border:1px solid #00000040;background:#1f1f1f;color:#dcdcdc;font-weight:900;cursor:pointer;";
+b.onclick=()=>save(v); return b;};
+PRE.forEach(v=>row.appendChild(mk(v)));
 
-// same colors as before
-function colorForSleep(h){
-  const n = Number(h);
-  if (!Number.isFinite(n)) return "#303030";
-  if (n < 4) return "#ff4d4d";
-  if (n < 6) return "#ffb84d";
-  if (n < 7) return "#ffe44d";
-  if (n < 8) return "#b6ff4d";
-  return "#5bff4d";
-}
-
-const file = app.workspace.getActiveFile();
-if (!file) return;
-
-const text = await app.vault.read(file);
-
-let current = readInline(text, FIELD);
-if (current == null) current = 0;
-current = clamp(current);
-
-// goal: prefer inline sleep_goal::, fallback to frontmatter sleep_goal, fallback 0
-let goal = readInline(text, GOAL_FIELD);
-if (goal == null) {
-  const fmGoal = Number(dv.current()?.[GOAL_FIELD] ?? 0);
-  goal = Number.isFinite(fmGoal) ? fmGoal : 0;
-}
-
-const container = this.container;
-container.innerHTML = "";
-container.style.marginBottom = "14px";
-
-// card
-const card = document.createElement("div");
-card.style.cssText = "background:rgba(0,0,0,0.10);border:1px solid #00000040;border-radius:10px;padding:12px;";
-container.appendChild(card);
-
-// title
-const title = document.createElement("div");
-title.textContent = "😴 Sleep (hours)";
-title.style.cssText = "font-weight:800;margin-bottom:8px;opacity:.9;";
-card.appendChild(title);
-
-// row
-const row = document.createElement("div");
-row.style.cssText = "display:flex;gap:12px;align-items:center;width:100%;";
-card.appendChild(row);
-
-const sliderWrap = document.createElement("div");
-sliderWrap.style.cssText = "flex:1 1 auto;min-width:0;";
-row.appendChild(sliderWrap);
-
-const slider = document.createElement("input");
-slider.type = "range";
-slider.min = String(min);
-slider.max = String(max);
-slider.step = String(step);
-slider.value = String(current);
-slider.style.cssText = "width:100%;display:block;";
-sliderWrap.appendChild(slider);
-
-const pill = document.createElement("div");
-pill.style.cssText = "flex:0 0 auto;white-space:nowrap;padding:6px 10px;border-radius:999px;border:1px solid #00000040;font-weight:800;color:#000;";
-row.appendChild(pill);
-
-function paint(v){
-  const n = clamp(v);
-  const c = colorForSleep(n);
-  pill.textContent = `${n}h / ${goal}h`;
-  pill.style.background = c;
-  slider.style.accentColor = c;
-}
-
-slider.oninput = () => paint(slider.value);
-
-// Save only on release
-slider.onchange = async () => {
-  const n = clamp(slider.value);
-
-  const curText = await app.vault.read(file);
-  const newText = upsertInline(curText, FIELD, n);
-
-  await app.vault.modify(file, newText);
-  new Notice(`Sleep set to ${n}h`);
-};
-
-paint(current);
+const i=document.createElement("input"); i.type="number"; i.step="0.5"; i.min=MIN; i.max=MAX; i.placeholder="Custom ↵";
+i.style.cssText="width:110px;padding:6px 10px;border-radius:10px;border:1px solid #00000040;background:transparent;color:var(--text-normal);outline:none;";
+i.addEventListener("keydown",e=>{if(e.key==="Enter") save(i.value);});
+row.appendChild(i);
 ```
 ## Journal
 
