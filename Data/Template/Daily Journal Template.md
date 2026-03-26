@@ -3,7 +3,7 @@ other_liquid:: 0
 hydration:: 0
 water:: 0
 mood:: 0
-sleep:: 8
+sleep:: 0
 ####
 ```dataviewjs
 const DAILY_FOLDER = "4 Archives/Journal/Daily Notes";
